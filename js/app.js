@@ -19,11 +19,7 @@ function createScene()
 
     // SceneLoader doc :
     // http://doc.babylonjs.com/api/classes/babylon.sceneloader#append
-    BABYLON.SceneLoader.Append(
-	"assets/",
-	"chair.glb",
-	scene
-    );
+    BABYLON.SceneLoader.Append("assets/", "chair.glb", scene);
 
     return scene;
 }
