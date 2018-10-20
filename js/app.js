@@ -19,7 +19,20 @@ function createScene()
 
     // SceneLoader doc :
     // http://doc.babylonjs.com/api/classes/babylon.sceneloader#append
-    BABYLON.SceneLoader.Append("assets/", "chair.glb", scene);
+    var assetsManager = new BABYLON.AssetsManager(scene);
+    var meshTask = assetsManager.addMeshTask("task", "", "assets/", "chair.glb");
+    meshTask.onSuccess = function (task) {
+	task.loadedMeshes[0].position = BABYLON.Vector3.Zero();
+    };
+
+    meshTask.onError = function (task, message, exception) {
+	console.log(message, exception);
+    }
+
+    meshTask.onError = function (task, message, exception) {
+	console.log(message, exception);
+    };
+    assetsManager.load();
 
     return scene;
 }
